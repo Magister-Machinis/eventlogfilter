@@ -98,7 +98,7 @@ $EVList | out-file -filepath $dest -append
 
 $end = get-date
 $times= $end - $start
-write-host "Intelligence gathering of $listsize addresses complete."
+
 write-host "Time taken:"
 $times
 Read-Host -Prompt "Press Enter to exit"
