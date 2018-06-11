@@ -8,6 +8,15 @@ $conc = 6
 $runspacepool = [RunspaceFactory ]::CreateRunspacePool(1,$conc)
 $path = resolve-path $path
 $dest = resolve-path $dest
+$test = ($path -split"/.")[-1]
+
+if($test -eq "evt")
+{
+	Write-Host "Converting evt to evtx"
+	wevtutil epl $path ".\converted.evtx" /lf:true
+	$path = Resolve-Path ".\converted.evtx"
+}
+
 $EVHASHlist = @()
 $path
 $ids = $ids.split(",")
